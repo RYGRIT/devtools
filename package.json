@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "version": "0.0.0-alpha.19",
+  "version": "0.0.0-alpha.20",
   "private": true,
   "packageManager": "pnpm@10.25.0",
   "scripts": {
@@ -47,6 +47,7 @@
     "@vueuse/core": "catalog:frontend",
     "ansis": "catalog:deps",
     "bumpp": "catalog:devtools",
+    "chokidar": "catalog:devtools",
     "esbuild": "catalog:build",
     "eslint": "catalog:devtools",
     "lint-staged": "catalog:devtools",
@@ -66,14 +67,17 @@
     "vue-tsc": "catalog:devtools"
   },
   "resolutions": {
-    "@jridgewell/sourcemap-codec": "1.5.0",
+    "@jridgewell/sourcemap-codec": "catalog:resolutions",
     "@nuxt/devtools": "catalog:devtools",
     "@nuxt/kit": "catalog:build",
+    "@nuxt/vite-builder": "catalog:build",
     "@rolldown/debug": "catalog:deps",
+    "chokidar": "catalog:devtools",
     "esbuild": "catalog:build",
     "nitropack": "catalog:build",
     "nuxt": "catalog:build",
     "rolldown": "catalog:build",
+    "semver": "catalog:resolutions",
     "vite": "catalog:build"
   },
   "simple-git-hooks": {

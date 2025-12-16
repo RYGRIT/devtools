@@ -1,7 +1,7 @@
 {
   "name": "@vitejs/devtools-kit",
   "type": "module",
-  "version": "0.0.0-alpha.19",
+  "version": "0.0.0-alpha.20",
   "description": "Vite DevTools Kit",
   "author": "VoidZero Inc.",
   "license": "MIT",
@@ -22,6 +22,8 @@
     ".": "./dist/index.mjs",
     "./client": "./dist/client.mjs",
     "./utils/events": "./dist/utils/events.mjs",
+    "./utils/nanoid": "./dist/utils/nanoid.mjs",
+    "./utils/shared-state": "./dist/utils/shared-state.mjs",
     "./package.json": "./package.json"
   },
   "main": "./dist/index.mjs",
@@ -41,9 +43,11 @@
   "dependencies": {
     "@vitejs/devtools-rpc": "workspace:*",
     "birpc": "catalog:deps",
-    "birpc-x": "catalog:deps"
+    "birpc-x": "catalog:deps",
+    "immer": "catalog:deps"
   },
   "devDependencies": {
+    "my-ua-parser": "catalog:frontend",
     "tsdown": "catalog:build",
     "vite": "catalog:build"
   }

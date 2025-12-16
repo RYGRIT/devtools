@@ -1,5 +1,5 @@
 import type {} from '@vitejs/devtools'
-import type { ClientRpcReturn } from '@vitejs/devtools-kit/client'
+import type { DevToolsRpcClient } from '@vitejs/devtools-kit/client'
 import type {} from '../../node/rpc'
 import { useRuntimeConfig } from '#app/nuxt'
 import { getDevToolsRpcClient } from '@vitejs/devtools-kit/client'
@@ -13,12 +13,12 @@ export const connectionState = reactive<{
   error: null,
 })
 
-const rpc = shallowRef<ClientRpcReturn['rpc']>(undefined!)
+const rpc = shallowRef<DevToolsRpcClient>(undefined!)
 
 export async function connect() {
   const runtimeConfig = useRuntimeConfig()
   try {
-    const result = await getDevToolsRpcClient({
+    rpc.value = await getDevToolsRpcClient({
       baseURL: [
         '/.devtools/',
         runtimeConfig.app.baseURL,
@@ -36,14 +36,13 @@ export async function connect() {
         },
       },
       rpcOptions: {
-        onError: (e, name) => {
+        onGeneralError: (e, name) => {
           connectionState.error = e
           console.error(`[vite-devtools] RPC error on executing "${name}":`)
         },
       },
     })
 
-    rpc.value = result.rpc
     connectionState.connected = true
   }
   catch (e) {
